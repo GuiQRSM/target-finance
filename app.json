@@ -2,6 +2,19 @@
   "expo": {
     "name": "target-finance",
     "slug": "target-finance",
-    "version": "1.0.0"
+    "version": "1.0.0",
+    "android": {
+      "package": "com.alternativeCO.target",
+      "edgeToEdgeEnabled": true,
+      "adaptiveIcon": {
+        "foregroundImage": "./assets//adaptive-icon.png",
+        "backgroundColor": "#3D44CD"
+      }
+    },
+    "ios": {
+      "bundleIdentifier": "com.alternativeCO.target",
+      "icon": "./assets/ios-icon.png"
+    }
   }
+  
 }
