@@ -1,4 +1,4 @@
-package com.targetfinance
+package com.alternativeCO.target
 
 import android.app.Application
 import android.content.res.Configuration

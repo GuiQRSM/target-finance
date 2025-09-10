@@ -1,4 +1,4 @@
-package com.targetfinance
+package com.alternativeCO.target
 
 import android.os.Build
 import android.os.Bundle
