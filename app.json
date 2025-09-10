@@ -14,7 +14,9 @@
     "ios": {
       "bundleIdentifier": "com.alternativeCO.target",
       "icon": "./assets/ios-icon.png"
-    }
+    },
+    "plugins": [
+      "expo-router"
+    ]
   }
-  
 }
