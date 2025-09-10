@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "target-finance",
-    "slug": "target-finance",
+    "name": "target",
+    "slug": "target",
     "version": "1.0.0",
     "android": {
       "package": "com.alternativeCO.target",
