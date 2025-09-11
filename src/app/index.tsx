@@ -9,10 +9,10 @@ export default function Index() {
             <Text style={{padding: 16}}>Olá, Expo Router</Text>
 
             <Button  title="navegar" onPress={() => router.navigate("/target")} />
-
             <View style={{padding: 4}}/>
-
-           <Button title="ID transaction" onPress={() => router.navigate("/transaction/8")}/>
+           <Button title="Transação" onPress={() => router.navigate("/transaction/8")}/>
+            <View style={{padding: 4}}/>
+            <Button title="Progresso" onPress={() => router.navigate("/in-progress/12")}/>
         </View>
     )
 }
