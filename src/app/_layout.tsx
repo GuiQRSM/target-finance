@@ -1,7 +1,9 @@
-import { Slot } from "expo-router"
+import { Stack } from "expo-router";
+import { colors } from "@/theme/colors";
 
 export default function Layout() {
+    console.log("Passou pelo layout primeiro")
     return (
-        <Slot />
+        <Stack screenOptions={{headerShown: false, contentStyle: {backgroundColor: colors.white}}} />
     )
 }
