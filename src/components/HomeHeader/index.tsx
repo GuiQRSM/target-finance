@@ -6,7 +6,7 @@ export function HomeHeader() {
   return (
     <LinearGradient
       colors={[colors.blue[500], colors.blue[800]]}
-      style={styles.conatainer}
+      style={styles.container}
     />
   );
 }
