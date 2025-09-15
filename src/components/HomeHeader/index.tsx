@@ -2,6 +2,7 @@ import { View, Text } from 'react-native';
 import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '@/theme/colors';
 import { styles } from './styles';
+import { Separator } from '../Separator';
 
 type HomeHeaderProps = {
   total: string;
@@ -21,6 +22,8 @@ export function HomeHeader({ data }: Props) {
         <Text style={styles.label}>Total que você possui</Text>
         <Text style={styles.total}>{data.total}</Text>
       </View>
+
+      <Separator color={colors.blue[400]} />
     </LinearGradient>
   );
 }
