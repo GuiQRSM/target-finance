@@ -3,6 +3,14 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { colors } from '@/theme/colors';
 import { styles } from './styles';
 
+type HomeHeaderProps = {
+  total: string;
+};
+
+type Props = {
+  data: HomeHeaderProps;
+};
+
 export function HomeHeader() {
   return (
     <LinearGradient
