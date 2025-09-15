@@ -3,4 +3,7 @@ import { colors, fontFamily } from '@/theme';
 
 export const styles = StyleSheet.create({
   container: {},
+  header: {},
+  label: {},
+  value: {},
 });
