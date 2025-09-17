@@ -2,6 +2,7 @@ import { View } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
 import { Target } from '@/components/Target';
 import { colors } from '@/theme';
+import { List } from '@/components/List';
 
 const summary = {
   total: 'R$ 2.680,00',
@@ -11,6 +12,14 @@ const summary = {
 
 const targets = [
   {
+    id: '1',
+    name: 'Apple Watch',
+    percentage: '50%',
+    current: ' R$ 580,00',
+    target: 'R$ 1.790,00',
+  },
+  {
+    id: '2',
     name: 'Apple Watch',
     percentage: '50%',
     current: ' R$ 580,00',
@@ -22,7 +31,12 @@ export default function Index() {
   return (
     <View style={{ flex: 1 }}>
       <HomeHeader data={summary} />
-      <Target data={targets[0]} />
+      <List
+        data={targets}
+        renderItem={({ item }) => <Target data={item} />}
+        title="Metas"
+        keyExtractor={(item) => item.id}
+      />
     </View>
   );
 }
