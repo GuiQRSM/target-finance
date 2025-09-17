@@ -1,11 +1,12 @@
 import {
-  Text,
   View,
+  Text,
   TouchableOpacity,
   TouchableOpacityProps,
 } from 'react-native';
-import { styles } from './style';
+import { colors } from '@/theme';
 import { MaterialIcons } from '@expo/vector-icons';
+import { styles } from './style';
 
 export type TargetProps = {
   id?: string;
@@ -21,6 +22,14 @@ type Props = TouchableOpacityProps & {
 
 export function Target({ data, ...rest }: Props) {
   return (
-    <TouchableOpacity style={styles.container} {...rest}></TouchableOpacity>
+    <TouchableOpacity style={styles.container} {...rest}>
+      <View style={styles.content}>
+        <Text style={styles.name}>{data.name}</Text>
+
+        <Text style={styles.status}>
+          {data.percentage} • {data.current} de {data.target}{' '}
+        </Text>
+      </View>
+    </TouchableOpacity>
   );
 }
