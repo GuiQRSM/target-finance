@@ -32,10 +32,12 @@ export default function Index() {
     <View style={{ flex: 1 }}>
       <HomeHeader data={summary} />
       <List
-        data={targets}
+        data={[]}
         renderItem={({ item }) => <Target data={item} />}
         title="Metas"
         keyExtractor={(item) => item.id}
+        emptyMessage="Nenhuma meta. Toque em uma nova meta para criar"
+        containerStyle={{ paddingHorizontal: 24 }}
       />
     </View>
   );
