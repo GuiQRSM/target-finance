@@ -30,6 +30,8 @@ export function Target({ data, ...rest }: Props) {
           {data.percentage} • {data.current} de {data.target}{' '}
         </Text>
       </View>
+
+      <MaterialIcons name="chevron-right" size={20} />
     </TouchableOpacity>
   );
 }
