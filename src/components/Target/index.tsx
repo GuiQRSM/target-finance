@@ -7,7 +7,7 @@ import {
 import { styles } from './style';
 import { MaterialIcons } from '@expo/vector-icons';
 
-export type TargetProps = TouchableOpacityProps & {
+export type TargetProps = {
   id?: string;
   name: string;
   percentage: string;
@@ -15,10 +15,12 @@ export type TargetProps = TouchableOpacityProps & {
   target: string;
 };
 
-type Props = {
+type Props = TouchableOpacityProps & {
   data: TargetProps;
 };
 
-export function Target({ data }: Props) {
-  return;
+export function Target({ data, ...rest }: Props) {
+  return (
+    <TouchableOpacity style={styles.container} {...rest}></TouchableOpacity>
+  );
 }
