@@ -30,13 +30,13 @@ export function List<T>({
       <FlatList
         data={data}
         renderItem={renderItem}
-        {...rest}
         ItemSeparatorComponent={() => <Separator color={colors.gray[200]} />}
         contentContainerStyle={styles.listContainer}
         showsVerticalScrollIndicator={false}
         ListEmptyComponent={() => (
           <Text style={styles.empty}>{emptyMessage}</Text>
         )}
+        {...rest}
       />
     </View>
   );

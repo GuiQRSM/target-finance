@@ -18,13 +18,6 @@ const targets = [
     current: ' R$ 580,00',
     target: 'R$ 1.790,00',
   },
-  {
-    id: '2',
-    name: 'Apple Watch',
-    percentage: '50%',
-    current: ' R$ 580,00',
-    target: 'R$ 1.790,00',
-  },
 ];
 
 export default function Index() {
@@ -32,7 +25,7 @@ export default function Index() {
     <View style={{ flex: 1 }}>
       <HomeHeader data={summary} />
       <List
-        data={[]}
+        data={targets}
         renderItem={({ item }) => <Target data={item} />}
         title="Metas"
         keyExtractor={(item) => item.id}
