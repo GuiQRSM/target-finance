@@ -1,5 +1,4 @@
-import { View, Button } from 'react-native';
-import { router } from 'expo-router';
+import { View } from 'react-native';
 import { PageHeader } from '@/components/pageHeader';
 
 export default function Target() {
