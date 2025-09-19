@@ -13,7 +13,6 @@ export default function Target() {
           onPress: () => {},
         }}
       />
-      <Button title="voltar" onPress={() => router.back()} />
     </View>
   );
 }
