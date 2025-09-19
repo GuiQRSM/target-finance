@@ -4,4 +4,4 @@ import { styles } from './style';
 
 type Props = {};
 
-export function InPut({}) {}
+export function Input({}) {}
