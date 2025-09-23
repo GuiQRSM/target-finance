@@ -4,7 +4,7 @@ import { colors } from '@/theme';
 import { styles } from './styles';
 import { TransactionType } from '@/utils/TransactionTypes';
 
-type TransactionProps = {
+export type TransactionProps = {
   id: string;
   value: string;
   date: string;
@@ -12,6 +12,10 @@ type TransactionProps = {
   type: TransactionType;
 };
 
-export function Transaction() {
+type Props = {
+  data: TransactionProps;
+};
+
+export function Transaction({ data }: Props) {
   return;
 }
