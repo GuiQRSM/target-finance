@@ -17,7 +17,7 @@ const transactions: TransactionProps[] = [
     id: '1',
     value: 'R$ 20,00',
     date: '12/04/25',
-    type: TransactionType.output,
+    type: TransactionType.Output,
   },
   {
     id: '2',
