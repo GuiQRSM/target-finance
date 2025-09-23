@@ -1,6 +1,13 @@
 import { View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
+import { Progress } from '@/components/Progress';
+
+const details = {
+  current: 'R$ 580,00',
+  target: ' R$ 1.790,00',
+  percentage: 22,
+};
 
 export default function InProgress() {
   const params = useLocalSearchParams<{ id: string }>();
@@ -14,6 +21,8 @@ export default function InProgress() {
           onPress: () => {},
         }}
       />
+
+      <Progress data={details} />
     </View>
   );
 }
