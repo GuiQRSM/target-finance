@@ -2,12 +2,31 @@ import { View } from 'react-native';
 import { useLocalSearchParams } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
+import { List } from '@/components/List';
+import { Transaction, TransactionProps } from '@/components/Transaction';
+import { TransactionType } from '@/utils/TransactionTypes';
 
 const details = {
   current: 'R$ 580,00',
   target: ' R$ 1.790,00',
   percentage: 22,
 };
+
+const transactions: TransactionProps[] = [
+  {
+    id: '1',
+    value: 'R$ 20,00',
+    date: '12/04/25',
+    type: TransactionType.output,
+  },
+  {
+    id: '2',
+    value: 'R$ 300,00',
+    date: '12/05/25',
+    description: 'CDB de 110% no banco XPTO',
+    type: TransactionType.Input,
+  },
+];
 
 export default function InProgress() {
   const params = useLocalSearchParams<{ id: string }>();
@@ -23,6 +42,14 @@ export default function InProgress() {
       />
 
       <Progress data={details} />
+
+      <List
+        title="Transações"
+        data={transactions}
+        renderItem={({ item }) => (
+          <Transaction data={item} onRemove={() => {}} />
+        )}
+      />
     </View>
   );
 }
