@@ -17,7 +17,7 @@ export const styles = StyleSheet.create({
     fontFamily: fontFamily.medium,
     color: colors.black,
   },
-  descriptiom: {
+  description: {
     fontSize: 12,
     fontFamily: fontFamily.regular,
     color: colors.gray[500],
