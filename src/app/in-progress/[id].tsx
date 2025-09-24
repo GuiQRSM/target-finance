@@ -50,7 +50,7 @@ export default function InProgress() {
         renderItem={({ item }) => (
           <Transaction data={item} onRemove={() => {}} />
         )}
-        emptyMessage="Nenhuma transação. toque em nova transação para monitorar seu dinheiro aqui"
+        emptyMessage='Nenhuma transação. toque em "nova transação" para adcionar'
       />
       <Button
         title="Nova transação"
