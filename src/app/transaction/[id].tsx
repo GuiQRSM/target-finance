@@ -18,7 +18,7 @@ export default function Transaction() {
       <View style={{ marginTop: 32, gap: 24 }}>
         <InputCurrency label="Valor (R$)" value={0} />
         <Input
-          label="Motivo (opcional"
+          label="Motivo (opcional)"
           placeholder="Ex: Investir em CDB de 110% no banco XPTO"
         />
         <Button title="Salvar" />
