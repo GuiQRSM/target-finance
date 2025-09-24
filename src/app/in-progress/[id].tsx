@@ -1,8 +1,9 @@
 import { View } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, router } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
+import { Button } from '@/components/Butoon';
 import { Transaction, TransactionProps } from '@/components/Transaction';
 import { TransactionType } from '@/utils/TransactionTypes';
 
@@ -49,6 +50,11 @@ export default function InProgress() {
         renderItem={({ item }) => (
           <Transaction data={item} onRemove={() => {}} />
         )}
+        emptyMessage="Nenhuma transação. toque em nova transação para monitorar seu dinheiro aqui"
+      />
+      <Button
+        title="Nova transação"
+        onPress={() => router.navigate(`/transaction/${params.id}`)}
       />
     </View>
   );
