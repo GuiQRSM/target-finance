@@ -9,7 +9,7 @@ type Props = {
   onChange: (type: TransactionType) => void;
 };
 
-export function TransactionTypes({ selected, onChange }: Props) {
+export function TransactionTypeSwitch({ selected, onChange }: Props) {
   return (
     <View style={styles.container}>
       <Option
@@ -17,12 +17,14 @@ export function TransactionTypes({ selected, onChange }: Props) {
         title="Guardar"
         isSelected={selected === TransactionType.Input}
         selectedColor={colors.blue[500]}
+        onPress={() => onChange(TransactionType.Input)}
       />
       <Option
         icon="arrow-downward"
         title="Resgatar"
         isSelected={selected === TransactionType.Output}
         selectedColor={colors.red[400]}
+        onPress={() => onChange(TransactionType.Output)}
       />
     </View>
   );
