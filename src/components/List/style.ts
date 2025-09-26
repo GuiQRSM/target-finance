@@ -3,7 +3,7 @@ import { StyleSheet } from 'react-native';
 
 export const styles = StyleSheet.create({
   container: { flex: 1 },
-  listContainer: { gap: 16, paddingTop: 16, paddingBottom: 72 },
+  listContainer: { paddingBottom: 72 },
   title: {
     marginTop: 24,
     paddingBottom: 16,
