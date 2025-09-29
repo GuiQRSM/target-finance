@@ -18,11 +18,11 @@ export async function migrate(database: SQLiteDatabase) {
         amount FLOAT NOT NULL,
         observation TEXT NULL,
         created_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
-        updated_at TIMESTAMP NOT NULL DEFAULT current_timestamp
+        updated_at TIMESTAMP NOT NULL DEFAULT current_timestamp,
 
         CONSTRAINT fk_targets_transactions 
-        FOREIGN KEY (target_id) REFERENCES targets(id)
-        ON DELETE CASCADE
+        FOREIGN KEY (target_id) REFERENCES targets(id) 
+        ON DELETE CASCADE 
         );
         
         `);
