@@ -5,6 +5,8 @@ import { InputCurrency } from '@/components/InputCurrency';
 import { Button } from '@/components/Butoon';
 
 export default function Target() {
+  function handleSave() {}
+
   return (
     <View style={{ flex: 1, padding: 24 }}>
       <PageHeader
@@ -20,7 +22,7 @@ export default function Target() {
 
         <InputCurrency label="Valor alvo (R$)" value={2435} />
 
-        <Button title="Salvar" />
+        <Button title="Salvar" onPress={handleSave} />
       </View>
     </View>
   );
