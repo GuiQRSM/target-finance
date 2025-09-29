@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { View, Alert } from 'react-native';
-import { useLocalSearchParams } from 'expo-router';
+import { useLocalSearchParams, router } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
 import { Input } from '@/components/Input';
 import { InputCurrency } from '@/components/InputCurrency';
@@ -15,7 +15,10 @@ export default function Target() {
 
   function handleSave() {
     if (!name.trim() || amount <= 0) {
-      return Alert.alert('Atenção', 'Preencha mome e valor');
+      return Alert.alert(
+        'Atenção',
+        'Preencha nome e o valor precisa ser maior que zero'
+      );
     }
 
     SetIsProcessing(true);
@@ -23,7 +26,21 @@ export default function Target() {
     if (params.id) {
       //update
     } else {
-      //create
+      create();
+    }
+  }
+
+  async function create() {
+    try {
+      Alert.alert('Nova Meta', 'Meta criada com sucesso', [
+        {
+          text: 'Ok',
+          onPress: () => router.back(),
+        },
+      ]);
+    } catch {
+      Alert.alert('Erro', 'Não ficpossível criar a meta');
+      SetIsProcessing(false);
     }
   }
 
