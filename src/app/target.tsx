@@ -1,5 +1,6 @@
 import { useState } from 'react';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
+import { useLocalSearchParams } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
 import { Input } from '@/components/Input';
 import { InputCurrency } from '@/components/InputCurrency';
@@ -10,7 +11,15 @@ export default function Target() {
   const [name, SetName] = useState('');
   const [amount, SetAmount] = useState(0);
 
-  function handleSave() {}
+  const params = useLocalSearchParams<{ id?: string }>();
+
+  function handleSave() {
+    if (!name.trim() || amount <= 0) {
+      return Alert.alert('Atenção', 'Preencha mome e valor');
+    }
+
+    SetIsProcessing(true);
+  }
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
