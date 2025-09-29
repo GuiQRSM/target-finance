@@ -19,6 +19,12 @@ export default function Target() {
     }
 
     SetIsProcessing(true);
+
+    if (params.id) {
+      //update
+    } else {
+      //create
+    }
   }
 
   return (
