@@ -23,13 +23,15 @@ export default function Layout() {
   }
 
   return (
-    <SQLiteProvider databaseName="target.db" onInit={migrate}>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: { backgroundColor: colors.white },
-        }}
-      />
-    </SQLiteProvider>
+    <Suspense fallback={<Loading />}>
+      <SQLiteProvider databaseName="target.db" onInit={migrate} useSuspense>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: { backgroundColor: colors.white },
+          }}
+        />
+      </SQLiteProvider>
+    </Suspense>
   );
 }
