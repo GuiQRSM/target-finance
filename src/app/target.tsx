@@ -23,9 +23,15 @@ export default function Target() {
         <Input
           label="Nome da Meta"
           placeholder="Ex: Viagem para praia, Apple Watch"
+          onChangeText={SetName}
+          value={name}
         />
 
-        <InputCurrency label="Valor alvo (R$)" value={2435} />
+        <InputCurrency
+          label="Valor alvo (R$)"
+          value={amount}
+          onChangeValue={SetAmount}
+        />
 
         <Button
           title="Salvar"
