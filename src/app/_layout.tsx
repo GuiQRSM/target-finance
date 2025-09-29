@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Stack } from 'expo-router';
 import { colors } from '@/theme/colors';
 import {
@@ -7,6 +8,8 @@ import {
   Poppins_700Bold,
 } from '@expo-google-fonts/poppins';
 import { Loading } from '@/components/Loading';
+import { SQLiteProvider } from 'expo-sqlite';
+import { migrate } from '@/database/migrate';
 
 export default function Layout() {
   const [fontIsLoaded] = useFonts({
