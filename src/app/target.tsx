@@ -38,8 +38,9 @@ export default function Target() {
           onPress: () => router.back(),
         },
       ]);
-    } catch {
+    } catch (error) {
       Alert.alert('Erro', 'Não ficpossível criar a meta');
+      console.log(error);
       SetIsProcessing(false);
     }
   }
