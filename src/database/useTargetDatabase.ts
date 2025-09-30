@@ -1,4 +1,4 @@
-import { SQLiteDatabase } from 'expo-sqlite';
+import { useSQLiteContext } from 'expo-sqlite';
 
 export type TargetProps = {
   name: string;
@@ -6,7 +6,7 @@ export type TargetProps = {
 };
 
 export function useTargetsDatabase() {
-  const database = SQLiteDatabase;
+  const database = useSQLiteContext;
 
   async function create(data: TargetProps) {}
 
