@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, Alert } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
