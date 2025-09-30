@@ -13,6 +13,7 @@ export default function Target() {
   const [amount, SetAmount] = useState(0);
 
   const params = useLocalSearchParams<{ id?: string }>();
+  const targets = useTargetsDatabase();
 
   function handleSave() {
     if (!name.trim() || amount <= 0) {
