@@ -6,9 +6,13 @@ export type TargetProps = {
 };
 
 export function useTargetsDatabase() {
-  const database = useSQLiteContext;
+  const database = useSQLiteContext();
 
-  async function create(data: TargetProps) {}
+  async function create(data: TargetProps) {
+    const statement = await database.prepareAsync(
+      'INSERT INTO targets (name, amount) VALUES ($name, $amount)'
+    );
+  }
 
   return {
     create,
