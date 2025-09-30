@@ -12,6 +12,11 @@ export function useTargetsDatabase() {
     const statement = await database.prepareAsync(
       'INSERT INTO targets (name, amount) VALUES ($name, $amount)'
     );
+
+    statement.executeAsync({
+      $name: data.name,
+      $amount: data.amount,
+    });
   }
 
   return {
