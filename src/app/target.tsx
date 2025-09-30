@@ -13,7 +13,7 @@ export default function Target() {
   const [amount, SetAmount] = useState(0);
 
   const params = useLocalSearchParams<{ id?: string }>();
-  const targets = useTargetsDatabase();
+  const targetDatabase = useTargetsDatabase();
 
   function handleSave() {
     if (!name.trim() || amount <= 0) {
@@ -34,6 +34,7 @@ export default function Target() {
 
   async function create() {
     try {
+      await targetDatabase.create({ name, amount });
       Alert.alert('Nova Meta', 'Meta criada com sucesso', [
         {
           text: 'Ok',
