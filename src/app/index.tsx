@@ -31,12 +31,16 @@ export default function Index() {
       const response = await targetDatabase.listSavedByValue();
       console.log(response);
     } catch (error) {
-      Alert.alert('Erro', 'Não foi possível carregar as mestas');
+      Alert.alert('Erro', 'Não foi possível carregar as metas');
       console.log(error);
     }
   }
 
-  useFocusEffect(useCallback(() => {}, []));
+  useFocusEffect(
+    useCallback(() => {
+      fetchTargets();
+    }, [])
+  );
 
   return (
     <View style={{ flex: 1 }}>
