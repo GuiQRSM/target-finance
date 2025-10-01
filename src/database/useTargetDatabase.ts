@@ -31,8 +31,11 @@ export function useTargetsDatabase() {
 
   function listSavedByValue() {
     return database.getAllAsync<TargetResponse>(`
-      
-      
+      SELECT 
+      targets.id
+      targets.name
+      targets.amount
+      FROM targets
       `);
   }
 
