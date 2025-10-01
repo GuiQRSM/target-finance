@@ -26,6 +26,8 @@ const targets = [
 export default function Index() {
   const targetDatabase = useTargetsDatabase();
 
+  useFocusEffect(useCallback(() => {}, []));
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" />
