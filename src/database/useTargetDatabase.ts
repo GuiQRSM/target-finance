@@ -19,7 +19,15 @@ export function useTargetsDatabase() {
     });
   }
 
+  function listSavedByValue() {
+    return database.getAllAsync(`
+      
+      
+      `);
+  }
+
   return {
     create,
+    listSavedByValue,
   };
 }
