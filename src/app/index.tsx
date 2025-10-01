@@ -1,9 +1,11 @@
+import { useCallback } from 'react';
+import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, StatusBar } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
 import { Target } from '@/components/Target';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
-import { router } from 'expo-router';
+import { router, useFocusEffect } from 'expo-router';
 
 const summary = {
   total: 'R$ 2.680,00',
@@ -22,6 +24,8 @@ const targets = [
 ];
 
 export default function Index() {
+  const targetDatabase = useTargetsDatabase();
+
   return (
     <View style={{ flex: 1 }}>
       <StatusBar barStyle="light-content" />
