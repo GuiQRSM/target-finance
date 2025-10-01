@@ -1,6 +1,6 @@
 import { useCallback } from 'react';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
-import { View, StatusBar } from 'react-native';
+import { View, StatusBar, Alert } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
 import { Target } from '@/components/Target';
 import { List } from '@/components/List';
@@ -28,7 +28,12 @@ export default function Index() {
 
   async function fetchTargets() {
     try {
-    } catch (error) {}
+      const response = await targetDatabase.listSavedByValue();
+      console.log(response);
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível carregar as mestas');
+      console.log(error);
+    }
   }
 
   useFocusEffect(useCallback(() => {}, []));
