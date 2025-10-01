@@ -26,6 +26,11 @@ const targets = [
 export default function Index() {
   const targetDatabase = useTargetsDatabase();
 
+  async function fetchTargets() {
+    try {
+    } catch (error) {}
+  }
+
   useFocusEffect(useCallback(() => {}, []));
 
   return (
