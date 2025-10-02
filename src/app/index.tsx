@@ -1,4 +1,4 @@
-import { useCallback } from 'react';
+import { useCallback, useState } from 'react';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, StatusBar, Alert } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
@@ -13,18 +13,9 @@ const summary = {
   output: { label: 'Saídas', value: '-R$ 883.65' },
 };
 
-const targets = [
-  {
-    id: '1',
-    name: 'Apple Watch',
-    percentage: '50%',
-    current: ' R$ 580,00',
-    target: 'R$ 1.790,00',
-  },
-];
-
 export default function Index() {
   const targetDatabase = useTargetsDatabase();
+  const [targets, setTargets] = useState([]);
 
   async function fetchTargets() {
     try {
