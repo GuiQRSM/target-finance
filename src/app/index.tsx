@@ -17,14 +17,29 @@ export default function Index() {
   const targetDatabase = useTargetsDatabase();
   const [targets, setTargets] = useState<TargetProps[]>([]);
 
-  async function fetchTargets() {
+  async function fetchTargets(): Promise<TargetProps[]> {
     try {
       const response = await targetDatabase.listSavedByValue();
-      console.log(response);
+
+      return response.map((item) => ({
+        id: String(item.id),
+        name: item.name,
+        current: String(item.current),
+        percentage: item.percentage.toFixed(0) + '%',
+        target: String(item.amount),
+      }));
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível carregar as metas');
       console.log(error);
     }
+  }
+
+  async function fetchData() {
+    const targetDataPromise = fetchTargets();
+
+    const [targetData] = await Promise.all([targetDataPromise]);
+
+    setTargets(targetData);
   }
 
   useFocusEffect(
