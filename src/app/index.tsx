@@ -2,7 +2,7 @@ import { useCallback, useState } from 'react';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, StatusBar, Alert } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
-import { Target } from '@/components/Target';
+import { Target, TargetProps } from '@/components/Target';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
 import { router, useFocusEffect } from 'expo-router';
@@ -15,7 +15,7 @@ const summary = {
 
 export default function Index() {
   const targetDatabase = useTargetsDatabase();
-  const [targets, setTargets] = useState([]);
+  const [targets, setTargets] = useState<TargetProps[]>([]);
 
   async function fetchTargets() {
     try {
