@@ -6,6 +6,7 @@ import { Target, TargetProps } from '@/components/Target';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
 import { router, useFocusEffect } from 'expo-router';
+import { Loading } from '@/components/Loading';
 
 const summary = {
   total: 'R$ 2.680,00',
@@ -16,6 +17,7 @@ const summary = {
 export default function Index() {
   const targetDatabase = useTargetsDatabase();
   const [targets, setTargets] = useState<TargetProps[]>([]);
+  const [isFetching, setIsFetching] = useState(true);
 
   async function fetchTargets(): Promise<TargetProps[]> {
     try {
@@ -40,13 +42,18 @@ export default function Index() {
     const [targetData] = await Promise.all([targetDataPromise]);
 
     setTargets(targetData);
+    setIsFetching(false);
   }
 
   useFocusEffect(
     useCallback(() => {
-      fetchTargets();
+      fetchData();
     }, [])
   );
+
+  if (isFetching) {
+    return <Loading />;
+  }
 
   return (
     <View style={{ flex: 1 }}>
