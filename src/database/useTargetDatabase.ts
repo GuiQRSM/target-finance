@@ -38,6 +38,7 @@ export function useTargetsDatabase() {
       SUM(transactions.amount) AS current
       FROM targets
       LEFT JOIN transaction ON targets.id = transactions.target_id
+      GROUP BY   targets.id, targets.name, targets.amount
       `);
   }
 
