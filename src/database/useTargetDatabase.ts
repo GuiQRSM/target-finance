@@ -34,8 +34,10 @@ export function useTargetsDatabase() {
       SELECT 
       targets.id,
       targets.name,
-      targets.amount
+      targets.amount,
+      SUM(transactions.amount) AS current
       FROM targets
+      LEFT JOIN transaction ON targets.id = transactions.target_id
       `);
   }
 
