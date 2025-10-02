@@ -35,9 +35,9 @@ export function useTargetsDatabase() {
       targets.id,
       targets.name,
       targets.amount,
-      SUM(transactions.amount) AS current
+      COALESCE(SUM(transactions.amount), 0) AS current
       FROM targets
-      LEFT JOIN transaction ON targets.id = transactions.target_id
+      LEFT JOIN transactions ON targets.id = transactions.target_id
       GROUP BY   targets.id, targets.name, targets.amount
       `);
   }
