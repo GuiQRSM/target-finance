@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
+import { Loading } from '@/components/Loading';
 import { Transaction, TransactionProps } from '@/components/Transaction';
 import { numberToCurrency } from '@/utils/numberToCurrency';
 import { TransactionType } from '@/utils/TransactionTypes';
@@ -33,6 +34,7 @@ export default function InProgress() {
     target: 'R$ 0, 00',
     percentage: 0,
   });
+  const [isFetching, setIsFetching] = useState(true);
   const params = useLocalSearchParams<{ id: string }>();
   const targetsDatabase = useTargetsDatabase();
 
@@ -52,11 +54,22 @@ export default function InProgress() {
     }
   }
 
+  async function fetchData() {
+    const fetchDetailsPromise = fetchDetails();
+
+    await Promise.all([fetchDetailsPromise]);
+    setIsFetching(false);
+  }
+
   useFocusEffect(
     useCallback(() => {
-      fetchDetails();
+      fetchData();
     }, [])
   );
+
+  if (isFetching) {
+    return <Loading />;
+  }
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
