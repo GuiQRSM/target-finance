@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { PageHeader } from '@/components/pageHeader';
@@ -33,6 +33,15 @@ const transactions: TransactionProps[] = [
 export default function InProgress() {
   const params = useLocalSearchParams<{ id: string }>();
   const targetsDatabase = useTargetsDatabase();
+
+  async function fetchDetails() {
+    try {
+      const response = await targetsDatabase.show(Number(params.id));
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível exibir detalhes da meta');
+      console.log(error);
+    }
+  }
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
