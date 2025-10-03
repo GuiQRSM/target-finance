@@ -1,5 +1,6 @@
 import { View } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
+import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
@@ -31,6 +32,7 @@ const transactions: TransactionProps[] = [
 
 export default function InProgress() {
   const params = useLocalSearchParams<{ id: string }>();
+  const targetsDatabase = useTargetsDatabase();
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
