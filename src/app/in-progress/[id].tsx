@@ -1,11 +1,13 @@
 import { View, Alert } from 'react-native';
-import { useLocalSearchParams, router } from 'expo-router';
+import { useCallback, useState } from 'react';
+import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
 import { Transaction, TransactionProps } from '@/components/Transaction';
+import { numberToCurrency } from '@/utils/numberToCurrency';
 import { TransactionType } from '@/utils/TransactionTypes';
 
 const details = {
@@ -31,17 +33,36 @@ const transactions: TransactionProps[] = [
 ];
 
 export default function InProgress() {
+  const [details, setDetails] = useState({
+    name: '',
+    current: 'R$ 0,00',
+    target: 'R$ 0, 00',
+    percentage: 0,
+  });
   const params = useLocalSearchParams<{ id: string }>();
   const targetsDatabase = useTargetsDatabase();
 
   async function fetchDetails() {
     try {
       const response = await targetsDatabase.show(Number(params.id));
+
+      setDetails({
+        name: response.name,
+        current: numberToCurrency(response.current),
+        target: numberToCurrency(response.amount),
+        percentage: response.percentage,
+      });
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível exibir detalhes da meta');
       console.log(error);
     }
   }
+
+  useFocusEffect(
+    useCallback(() => {
+      fetchDetails();
+    }, [])
+  );
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
