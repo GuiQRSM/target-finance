@@ -10,12 +10,6 @@ import { Transaction, TransactionProps } from '@/components/Transaction';
 import { numberToCurrency } from '@/utils/numberToCurrency';
 import { TransactionType } from '@/utils/TransactionTypes';
 
-const details = {
-  current: 'R$ 580,00',
-  target: ' R$ 1.790,00',
-  percentage: 22,
-};
-
 const transactions: TransactionProps[] = [
   {
     id: '1',
@@ -67,7 +61,7 @@ export default function InProgress() {
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
       <PageHeader
-        title="Apple Watch"
+        title={details.name}
         rightButtom={{
           icon: 'edit',
           onPress: () => {},
