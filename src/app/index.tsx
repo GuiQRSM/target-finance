@@ -3,6 +3,7 @@ import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, StatusBar, Alert } from 'react-native';
 import { HomeHeader } from '@/components/HomeHeader';
 import { Target, TargetProps } from '@/components/Target';
+import { numberToCurrency } from '@/utils/numberToCurrency';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
 import { router, useFocusEffect } from 'expo-router';
@@ -26,9 +27,9 @@ export default function Index() {
       return response.map((item) => ({
         id: String(item.id),
         name: item.name,
-        current: String(item.current),
+        current: numberToCurrency(item.current),
         percentage: item.percentage.toFixed(0) + '%',
-        target: String(item.amount),
+        target: numberToCurrency(item.amount),
       }));
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível carregar as metas');
