@@ -5,6 +5,10 @@ export type TargetProps = {
   amount: number;
 };
 
+export type TargetUpdate = {
+  id: number;
+};
+
 export type TargetResponse = {
   id: number;
   name: string;
