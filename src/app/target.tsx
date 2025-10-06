@@ -83,8 +83,25 @@ export default function Target() {
 
     Alert.alert('Remover', 'Deseja realmente remover?', [
       { text: 'Não', style: 'cancel' },
-      { text: 'Sim' },
+      { text: 'Sim', onPress: remove },
     ]);
+  }
+
+  async function remove() {
+    try {
+      SetIsProcessing(true);
+
+      await targetDatabase.remove(Number(params.id));
+      Alert.alert('Meta', 'Meta removida!', [
+        {
+          text: 'Ok',
+          onPress: () => router.replace('/'),
+        },
+      ]);
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível remover');
+      console.log(error);
+    }
   }
 
   useEffect(() => {
