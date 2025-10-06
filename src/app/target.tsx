@@ -86,6 +86,9 @@ export default function Target() {
       <PageHeader
         title="Meta"
         subtitle="Economize para alcançar sua meta financeira."
+        rightButtom={
+          params.id ? { icon: 'delete', onPress: () => {} } : undefined
+        }
       />
 
       <View style={{ marginTop: 32, gap: 24 }}>
