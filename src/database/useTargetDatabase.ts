@@ -83,7 +83,7 @@ export function useTargetsDatabase() {
   }
 
   async function remove(id: number) {
-    await database.runAsync('DELETE EFROM targets WHERE ID = ?', id);
+    await database.runAsync('DELETE FROM targets WHERE ID = ?', id);
   }
 
   return {
