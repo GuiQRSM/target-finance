@@ -77,7 +77,7 @@ export default function InProgress() {
         title={details.name}
         rightButtom={{
           icon: 'edit',
-          onPress: () => {},
+          onPress: () => router.navigate(`target?id = ${params.id}`),
         }}
       />
 
