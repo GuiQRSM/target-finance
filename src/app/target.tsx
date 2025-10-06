@@ -6,6 +6,7 @@ import { PageHeader } from '@/components/pageHeader';
 import { Input } from '@/components/Input';
 import { InputCurrency } from '@/components/InputCurrency';
 import { Button } from '@/components/Butoon';
+import { styles } from '@/components/Loading/style';
 
 export default function Target() {
   const [isProcessing, SetIsProcessing] = useState(false);
@@ -75,6 +76,17 @@ export default function Target() {
     }
   }
 
+  function handleRemove() {
+    if (!params.id) {
+      return;
+    }
+
+    Alert.alert('Remover', 'Deseja realmente remover?', [
+      { text: 'Não', style: 'cancel' },
+      { text: 'Sim' },
+    ]);
+  }
+
   useEffect(() => {
     if (params.id) {
       fetchDetails(Number(params.id));
@@ -87,7 +99,7 @@ export default function Target() {
         title="Meta"
         subtitle="Economize para alcançar sua meta financeira."
         rightButtom={
-          params.id ? { icon: 'delete', onPress: () => {} } : undefined
+          params.id ? { icon: 'delete', onPress: handleRemove } : undefined
         }
       />
 
