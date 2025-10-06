@@ -60,6 +60,7 @@ export default function Target() {
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível atualizar a meta.');
       console.log(error);
+      SetIsProcessing(false);
     }
   }
 
