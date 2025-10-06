@@ -42,9 +42,20 @@ export default function Target() {
         },
       ]);
     } catch (error) {
-      Alert.alert('Erro', 'Não ficpossível criar a meta');
+      Alert.alert('Erro', 'Não foi possível criar a meta');
       console.log(error);
       SetIsProcessing(false);
+    }
+  }
+
+  async function fetchDetails(id: number) {
+    try {
+      const response = await targetDatabase.show(id);
+      SetName(response.name);
+      SetAmount(response.amount);
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível carregar os detalhes da meta');
+      console.log(error);
     }
   }
 
