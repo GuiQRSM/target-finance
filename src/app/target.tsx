@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, Alert } from 'react-native';
 import { useLocalSearchParams, router } from 'expo-router';
@@ -58,6 +58,12 @@ export default function Target() {
       console.log(error);
     }
   }
+
+  useEffect(() => {
+    if (params.id) {
+      fetchDetails(Number(params.id));
+    }
+  }, [params.id]);
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
