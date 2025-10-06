@@ -5,7 +5,7 @@ export type TargetProps = {
   amount: number;
 };
 
-export type TargetUpdate = {
+export type TargetUpdate = TargetProps & {
   id: number;
 };
 
@@ -66,9 +66,26 @@ export function useTargetsDatabase() {
       `);
   }
 
+  async function update(data: TargetUpdate) {
+    const statement = await database.prepareAsync(`
+      UPDATE targets SET
+        name = $name,
+        amount = $amount,
+        updated_at = CURRENT_TIMESTAMP,
+      WHERE id = $id
+      `);
+
+    statement.executeAsync({
+      $id: data.id,
+      $name: data.name,
+      $amount: data.amount,
+    });
+  }
+
   return {
     create,
     listSavedByValue,
     show,
+    update,
   };
 }
