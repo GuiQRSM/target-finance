@@ -6,7 +6,6 @@ import { PageHeader } from '@/components/pageHeader';
 import { Input } from '@/components/Input';
 import { InputCurrency } from '@/components/InputCurrency';
 import { Button } from '@/components/Butoon';
-import { styles } from '@/components/Loading/style';
 
 export default function Target() {
   const [isProcessing, SetIsProcessing] = useState(false);
