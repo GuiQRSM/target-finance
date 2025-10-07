@@ -9,7 +9,7 @@ import { Button } from '@/components/Butoon';
 import { TransactionTypeSwitch } from '@/components/TransactionType';
 
 export default function Transaction() {
-  const [amount, setAmount] = useState<number | null>(null);
+  const [amount, setAmount] = useState(0);
   const [observation, setObservation] = useState('');
   const [type, setType] = useState(TransactionType.Input);
   const [isCreating, setIsCreating] = useState(false);
@@ -17,7 +17,7 @@ export default function Transaction() {
 
   async function handleCreate() {
     try {
-      if (!amount || amount <= 0) {
+      if (amount <= 0) {
         Alert.alert(
           'Atenção, preencha o valor. A transação deve ser maior que zero.'
         );
