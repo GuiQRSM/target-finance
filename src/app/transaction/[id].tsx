@@ -48,7 +48,11 @@ export default function Transaction() {
           placeholder="Ex: Investir em CDB de 110% no banco XPTO"
           onChangeText={setObservation}
         />
-        <Button title="Salvar" isProcessing={isCreating} />
+        <Button
+          title="Salvar"
+          onPress={handleCreate}
+          isProcessing={isCreating}
+        />
       </View>
     </View>
   );
