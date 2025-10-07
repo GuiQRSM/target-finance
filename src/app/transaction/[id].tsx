@@ -1,7 +1,7 @@
 import { Alert, View } from 'react-native';
 import { useState } from 'react';
 import { TransactionType } from '@/utils/TransactionTypes';
-import { useLocalSearchParams } from 'expo-router';
+import { router, useLocalSearchParams } from 'expo-router';
 import { PageHeader } from '@/components/pageHeader';
 import { InputCurrency } from '@/components/InputCurrency';
 import { Input } from '@/components/Input';
@@ -16,6 +16,7 @@ export default function Transaction() {
   const [isCreating, setIsCreating] = useState(false);
 
   const params = useLocalSearchParams<{ id: string }>();
+  const transactionDatabse = useTransactionsDatabase();
 
   async function handleCreate() {
     try {
@@ -24,6 +25,18 @@ export default function Transaction() {
           'Atenção, preencha o valor. A transação deve ser maior que zero.'
         );
       }
+
+      await transactionDatabse.create({
+        target_id: Number(params.id),
+        amount: type === TransactionType.Output ? amount * -1 : amount,
+        observation,
+      });
+      Alert.alert('Sucesso', 'Transação salva com sucesso', [
+        {
+          text: 'ok',
+          onPress: router.back,
+        },
+      ]);
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível salvar a transação');
       console.log(error);
