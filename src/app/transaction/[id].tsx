@@ -10,6 +10,7 @@ import { TransactionTypeSwitch } from '@/components/TransactionType';
 
 export default function Transaction() {
   const [type, setType] = useState(TransactionType.Input);
+  const [isCreating, setIsCreating] = useState(false);
   const params = useLocalSearchParams<{ id: string }>();
 
   return (
@@ -26,7 +27,7 @@ export default function Transaction() {
           label="Motivo (opcional)"
           placeholder="Ex: Investir em CDB de 110% no banco XPTO"
         />
-        <Button title="Salvar" />
+        <Button title="Salvar" isProcessing={isCreating} />
       </View>
     </View>
   );
