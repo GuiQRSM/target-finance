@@ -10,6 +10,7 @@ import { TransactionTypeSwitch } from '@/components/TransactionType';
 
 export default function Transaction() {
   const [amount, setAmount] = useState<number | null>(null);
+  const [observation, setObservation] = useState('');
   const [type, setType] = useState(TransactionType.Input);
   const [isCreating, setIsCreating] = useState(false);
   const params = useLocalSearchParams<{ id: string }>();
@@ -17,7 +18,9 @@ export default function Transaction() {
   async function handleCreate() {
     try {
       if (!amount || amount <= 0) {
-        Alert.alert('Atenção, preencha o valor');
+        Alert.alert(
+          'Atenção, preencha o valor. A transação deve ser maior que zero.'
+        );
       }
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível salvar a transação');
@@ -35,7 +38,11 @@ export default function Transaction() {
 
       <View style={{ marginTop: 32, gap: 24 }}>
         <TransactionTypeSwitch selected={type} onChange={setType} />
-        <InputCurrency label="Valor (R$)" value={0} />
+        <InputCurrency
+          label="Valor (R$)"
+          value={amount}
+          onChangeValue={setAmount}
+        />
         <Input
           label="Motivo (opcional)"
           placeholder="Ex: Investir em CDB de 110% no banco XPTO"
