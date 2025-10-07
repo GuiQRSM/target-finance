@@ -1,4 +1,4 @@
-import { View } from 'react-native';
+import { Alert, View } from 'react-native';
 import { useState } from 'react';
 import { TransactionType } from '@/utils/TransactionTypes';
 import { useLocalSearchParams } from 'expo-router';
@@ -9,9 +9,22 @@ import { Button } from '@/components/Butoon';
 import { TransactionTypeSwitch } from '@/components/TransactionType';
 
 export default function Transaction() {
+  const [amount, setAmount] = useState<number | null>(null);
   const [type, setType] = useState(TransactionType.Input);
   const [isCreating, setIsCreating] = useState(false);
   const params = useLocalSearchParams<{ id: string }>();
+
+  async function handleCreate() {
+    try {
+      if (!amount || amount <= 0) {
+        Alert.alert('Atenção, preencha o valor');
+      }
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível salvar a transação');
+      console.log(error);
+      setIsCreating(false);
+    }
+  }
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
