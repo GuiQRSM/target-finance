@@ -7,12 +7,14 @@ import { InputCurrency } from '@/components/InputCurrency';
 import { Input } from '@/components/Input';
 import { Button } from '@/components/Butoon';
 import { TransactionTypeSwitch } from '@/components/TransactionType';
+import { useTransactionsDatabase } from '@/database/useTransactionsDatabase';
 
 export default function Transaction() {
   const [amount, setAmount] = useState(0);
   const [observation, setObservation] = useState('');
   const [type, setType] = useState(TransactionType.Input);
   const [isCreating, setIsCreating] = useState(false);
+
   const params = useLocalSearchParams<{ id: string }>();
 
   async function handleCreate() {
