@@ -46,6 +46,7 @@ export default function Transaction() {
         <Input
           label="Motivo (opcional)"
           placeholder="Ex: Investir em CDB de 110% no banco XPTO"
+          onChangeText={setObservation}
         />
         <Button title="Salvar" isProcessing={isCreating} />
       </View>
