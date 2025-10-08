@@ -7,6 +7,7 @@ import { Loading } from '@/components/Loading';
 
 import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
+import dayjs from 'dayjs';
 
 import { Transaction, TransactionProps } from '@/components/Transaction';
 import { numberToCurrency } from '@/utils/numberToCurrency';
