@@ -24,6 +24,10 @@ export function useTransactionsDatabase() {
     });
   }
 
+  function listByTargetId(id: number) {
+    return database.getAllAsync(``);
+  }
+
   return {
     create,
   };
