@@ -44,6 +44,17 @@ export default function InProgress() {
     }
   }
 
+  async function fetchTransictions() {
+    try {
+      const response = await transactionsDatabase.listByTargetId(
+        Number(params.id)
+      );
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível carregar as transações.');
+      console.log(error);
+    }
+  }
+
   async function fetchData() {
     const fetchDetailsPromise = fetchDetails();
 
