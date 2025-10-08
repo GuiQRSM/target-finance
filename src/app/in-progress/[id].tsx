@@ -49,6 +49,17 @@ export default function InProgress() {
       const response = await transactionsDatabase.listByTargetId(
         Number(params.id)
       );
+
+      setTransactions(
+        response.map((item) => ({
+          id: String(item.id),
+          value: numberToCurrency(item.amount),
+          date: String(item.created_at),
+          description: item.observation,
+          type:
+            item.amount < 0 ? TransactionType.Output : TransactionType.Input,
+        }))
+      );
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível carregar as transações.');
       console.log(error);
@@ -57,8 +68,9 @@ export default function InProgress() {
 
   async function fetchData() {
     const fetchDetailsPromise = fetchDetails();
+    const fetchTransactionsPromise = fetchTransictions();
 
-    await Promise.all([fetchDetailsPromise]);
+    await Promise.all([fetchDetailsPromise, fetchTransactionsPromise]);
     setIsFetching(false);
   }
 
