@@ -55,7 +55,7 @@ export default function InProgress() {
         response.map((item) => ({
           id: String(item.id),
           value: numberToCurrency(item.amount),
-          date: String(item.created_at),
+          date: dayjs(item.created_at).format('DD/MM/YYYY [ás] HH:mm'),
           description: item.observation,
           type:
             item.amount < 0 ? TransactionType.Output : TransactionType.Input,
