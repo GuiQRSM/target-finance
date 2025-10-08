@@ -1,15 +1,19 @@
 import { View, Alert } from 'react-native';
-import { useCallback, useState } from 'react';
-import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
-import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
 import { Button } from '@/components/Butoon';
 import { Loading } from '@/components/Loading';
+
+import { useLocalSearchParams, router, useFocusEffect } from 'expo-router';
+import { useCallback, useState } from 'react';
+
 import { Transaction, TransactionProps } from '@/components/Transaction';
 import { numberToCurrency } from '@/utils/numberToCurrency';
 import { TransactionType } from '@/utils/TransactionTypes';
+
+import { useTargetsDatabase } from '@/database/useTargetDatabase';
+import { useTransactionsDatabase } from '@/database/useTransactionsDatabase';
 
 const transactions: TransactionProps[] = [
   {
@@ -37,6 +41,7 @@ export default function InProgress() {
   const [isFetching, setIsFetching] = useState(true);
   const params = useLocalSearchParams<{ id: string }>();
   const targetsDatabase = useTargetsDatabase();
+  const transactionsDatabase = useTransactionsDatabase();
 
   async function fetchDetails() {
     try {
