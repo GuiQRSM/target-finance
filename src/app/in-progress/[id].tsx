@@ -15,22 +15,6 @@ import { TransactionType } from '@/utils/TransactionTypes';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { useTransactionsDatabase } from '@/database/useTransactionsDatabase';
 
-const transactions: TransactionProps[] = [
-  {
-    id: '1',
-    value: 'R$ 20,00',
-    date: '12/04/25',
-    type: TransactionType.Output,
-  },
-  {
-    id: '2',
-    value: 'R$ 300,00',
-    date: '12/05/25',
-    description: 'CDB de 110% no banco XPTO',
-    type: TransactionType.Input,
-  },
-];
-
 export default function InProgress() {
   const [details, setDetails] = useState({
     name: '',
@@ -39,6 +23,7 @@ export default function InProgress() {
     percentage: 0,
   });
   const [isFetching, setIsFetching] = useState(true);
+  const [transactions, setTransactions] = useState<TransactionProps[]>([]);
   const params = useLocalSearchParams<{ id: string }>();
   const targetsDatabase = useTargetsDatabase();
   const transactionsDatabase = useTransactionsDatabase();
