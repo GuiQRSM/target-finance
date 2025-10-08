@@ -6,6 +6,15 @@ export type TransactionCreate = {
   observation?: string;
 };
 
+export type TransactionsResponse = {
+  id: number;
+  target_id: number;
+  amount: number;
+  observation: string;
+  created_at: Date;
+  updated_at: Date;
+};
+
 export function useTransactionsDatabase() {
   const database = useSQLiteContext();
 
