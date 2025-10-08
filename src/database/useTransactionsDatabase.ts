@@ -44,5 +44,6 @@ export function useTransactionsDatabase() {
 
   return {
     create,
+    listByTargetId,
   };
 }
