@@ -87,6 +87,8 @@ export default function InProgress() {
     }
   }
 
+  async function TransactionRemove(id: number) {}
+
   useFocusEffect(
     useCallback(() => {
       fetchData();
