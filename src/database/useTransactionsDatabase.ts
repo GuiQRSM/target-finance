@@ -42,7 +42,9 @@ export function useTransactionsDatabase() {
       `);
   }
 
-  async function remove(id: number) {}
+  async function remove(id: number) {
+    await database.runAsync('DELETE FROM transactions WHERE id = ?', id);
+  }
 
   return {
     create,
