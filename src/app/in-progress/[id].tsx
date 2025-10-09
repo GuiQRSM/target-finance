@@ -84,6 +84,9 @@ export default function InProgress() {
 
   async function TransactionRemove(id: number) {
     try {
+      await transactionsDatabase.remove(Number(id));
+      fetchData();
+      Alert.alert('Removida', 'Transação removida com sucesso!');
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível remover a transação');
       console.log(error);
