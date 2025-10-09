@@ -75,6 +75,8 @@ export default function InProgress() {
     setIsFetching(false);
   }
 
+  async function handleTransactionRemove(id: number) {}
+
   useFocusEffect(
     useCallback(() => {
       fetchData();
