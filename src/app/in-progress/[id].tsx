@@ -76,18 +76,19 @@ export default function InProgress() {
   }
 
   async function handleTransactionRemove(id: number) {
+    Alert.alert('Remover', 'Deseja realmente remover?', [
+      { text: 'Não', style: 'cancel' },
+      { text: 'Sim', onPress: () => TransactionRemove(id) },
+    ]);
+  }
+
+  async function TransactionRemove(id: number) {
     try {
-      Alert.alert('Remover', 'Deseja realmente remover?', [
-        { text: 'Não', style: 'cancel' },
-        { text: 'Sim', onPress: () => {} },
-      ]);
     } catch (error) {
       Alert.alert('Erro', 'Não foi possível remover a transação');
       console.log(error);
     }
   }
-
-  async function TransactionRemove(id: number) {}
 
   useFocusEffect(
     useCallback(() => {
