@@ -42,8 +42,11 @@ export function useTransactionsDatabase() {
       `);
   }
 
+  async function remove(id: number) {}
+
   return {
     create,
     listByTargetId,
+    remove,
   };
 }
