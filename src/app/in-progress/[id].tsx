@@ -121,7 +121,7 @@ export default function InProgress() {
         renderItem={({ item }) => (
           <Transaction
             data={item}
-            onRemove={() => handleTransactionRemove(item.id)}
+            onRemove={() => handleTransactionRemove(Number(item.id))}
           />
         )}
         emptyMessage='Nenhuma transação. toque em "nova transação" para adcionar'
