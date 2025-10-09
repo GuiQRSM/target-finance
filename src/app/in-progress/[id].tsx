@@ -29,7 +29,7 @@ export default function InProgress() {
   const targetsDatabase = useTargetsDatabase();
   const transactionsDatabase = useTransactionsDatabase();
 
-  async function fetchDetails() {
+  async function fetchTartgetsDetails() {
     try {
       const response = await targetsDatabase.show(Number(params.id));
 
@@ -68,7 +68,7 @@ export default function InProgress() {
   }
 
   async function fetchData() {
-    const fetchDetailsPromise = fetchDetails();
+    const fetchDetailsPromise = fetchTartgetsDetails();
     const fetchTransactionsPromise = fetchTransictions();
 
     await Promise.all([fetchDetailsPromise, fetchTransactionsPromise]);
