@@ -5,7 +5,7 @@ import { styles } from './styles';
 import { Separator } from '../Separator';
 import { Summary, SummaryProps } from '../Summary';
 
-type HomeHeaderProps = {
+export type HomeHeaderProps = {
   total: string;
   input: SummaryProps;
   output: SummaryProps;
