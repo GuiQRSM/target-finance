@@ -1,7 +1,7 @@
 import { useCallback, useState } from 'react';
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
 import { View, StatusBar, Alert } from 'react-native';
-import { HomeHeader } from '@/components/HomeHeader';
+import { HomeHeader, HomeHeaderProps } from '@/components/HomeHeader';
 import { Target, TargetProps } from '@/components/Target';
 import { numberToCurrency } from '@/utils/numberToCurrency';
 import { List } from '@/components/List';
@@ -9,16 +9,11 @@ import { Button } from '@/components/Butoon';
 import { router, useFocusEffect } from 'expo-router';
 import { Loading } from '@/components/Loading';
 
-const summary = {
-  total: 'R$ 2.680,00',
-  input: { label: 'Entradas', value: 'R$ 6,184.90' },
-  output: { label: 'Saídas', value: '-R$ 883.65' },
-};
-
 export default function Index() {
-  const targetDatabase = useTargetsDatabase();
+  const [summary, setSumary] = useState<HomeHeaderProps>();
   const [targets, setTargets] = useState<TargetProps[]>([]);
   const [isFetching, setIsFetching] = useState(true);
+  const targetDatabase = useTargetsDatabase();
 
   async function fetchTargets(): Promise<TargetProps[]> {
     try {
