@@ -15,6 +15,11 @@ export type TransactionsResponse = {
   updated_at: Date;
 };
 
+export type Summary = {
+  input: number;
+  output: number;
+};
+
 export function useTransactionsDatabase() {
   const database = useSQLiteContext();
 
