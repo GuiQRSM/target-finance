@@ -52,12 +52,17 @@ export function useTransactionsDatabase() {
   }
 
   async function sumary() {
-    await database.getFirstAsync<Summary>(``);
+    await database.getFirstAsync<Summary>(`
+      COALESCE(SUM(CASE WHEN amount > 0 THEN amount ELSE 0 END), 0) AS input,
+      COALESCE(SUM(CASE WHEN amount < 0 THEN amount ELSE 0 END), 0) AS output
+      FROM transactions
+      `);
   }
 
   return {
     create,
     listByTargetId,
     remove,
+    sumary,
   };
 }
