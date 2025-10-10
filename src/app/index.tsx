@@ -8,13 +8,16 @@ import { Loading } from '@/components/Loading';
 
 import { router, useFocusEffect } from 'expo-router';
 import { useCallback, useState } from 'react';
+
 import { useTargetsDatabase } from '@/database/useTargetDatabase';
+import { useTransactionsDatabase } from '@/database/useTransactionsDatabase';
 
 export default function Index() {
   const [summary, setSummary] = useState<HomeHeaderProps>();
   const [targets, setTargets] = useState<TargetProps[]>([]);
   const [isFetching, setIsFetching] = useState(true);
   const targetDatabase = useTargetsDatabase();
+  const transactionsDatabase = useTransactionsDatabase();
 
   async function fetchTargets(): Promise<TargetProps[]> {
     try {
@@ -31,6 +34,11 @@ export default function Index() {
       Alert.alert('Erro', 'Não foi possível carregar as metas');
       console.log(error);
     }
+  }
+
+  async function fetchSummary(): Promise<HomeHeaderProps> {
+    try {
+    } catch (error) {}
   }
 
   async function fetchData() {
