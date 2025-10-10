@@ -52,7 +52,7 @@ export function useTransactionsDatabase() {
   }
 
   async function sumary() {
-    await database.getFirstAsync(``);
+    await database.getFirstAsync<Summary>(``);
   }
 
   return {
