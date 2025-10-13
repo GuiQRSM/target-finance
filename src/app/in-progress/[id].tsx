@@ -1,4 +1,4 @@
-import { View, Alert } from 'react-native';
+import { View, Alert, StatusBar } from 'react-native';
 import { PageHeader } from '@/components/pageHeader';
 import { Progress } from '@/components/Progress';
 import { List } from '@/components/List';
@@ -105,6 +105,7 @@ export default function InProgress() {
 
   return (
     <View style={{ flex: 1, padding: 24, gap: 32 }}>
+      <StatusBar barStyle="dark-content" />
       <PageHeader
         title={details.name}
         rightButtom={{
