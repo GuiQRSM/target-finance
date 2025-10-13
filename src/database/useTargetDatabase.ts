@@ -33,7 +33,7 @@ export function useTargetsDatabase() {
     });
   }
 
-  function listSavedByValue() {
+  function listSavedByClosestTraget() {
     return database.getAllAsync<TargetResponse>(`
       SELECT 
       targets.id,
@@ -46,7 +46,7 @@ export function useTargetsDatabase() {
       FROM targets
       LEFT JOIN transactions ON targets.id = transactions.target_id
       GROUP BY   targets.id, targets.name, targets.amount
-      ORDER BY current DESC
+      ORDER BY percentage DESC
       `);
   }
 
@@ -88,7 +88,7 @@ export function useTargetsDatabase() {
 
   return {
     create,
-    listSavedByValue,
+    listSavedByClosestTraget,
     show,
     update,
     remove,

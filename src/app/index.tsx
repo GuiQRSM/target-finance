@@ -21,7 +21,7 @@ export default function Index() {
 
   async function fetchTargets(): Promise<TargetProps[]> {
     try {
-      const response = await targetDatabase.listSavedByValue();
+      const response = await targetDatabase.listSavedByClosestTraget();
 
       return response.map((item) => ({
         id: String(item.id),
@@ -59,10 +59,16 @@ export default function Index() {
 
   async function fetchData() {
     const targetDataPromise = fetchTargets();
+    const dataSummaryPromise = fetchSummary();
 
-    const [targetData] = await Promise.all([targetDataPromise]);
+    const [targetData, dataSummary] = await Promise.all([
+      targetDataPromise,
+      dataSummaryPromise,
+    ]);
 
     setTargets(targetData);
+    setSummary(dataSummary);
+
     setIsFetching(false);
   }
 
