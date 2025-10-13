@@ -1,11 +1,13 @@
-import { useState, useEffect } from 'react';
-import { useTargetsDatabase } from '@/database/useTargetDatabase';
-import { View, Alert } from 'react-native';
-import { useLocalSearchParams, router } from 'expo-router';
+import { View, Alert, StatusBar } from 'react-native';
 import { PageHeader } from '@/components/pageHeader';
 import { Input } from '@/components/Input';
 import { InputCurrency } from '@/components/InputCurrency';
 import { Button } from '@/components/Butoon';
+
+import { useState, useEffect } from 'react';
+import { useLocalSearchParams, router } from 'expo-router';
+
+import { useTargetsDatabase } from '@/database/useTargetDatabase';
 
 export default function Target() {
   const [isProcessing, SetIsProcessing] = useState(false);
@@ -111,6 +113,7 @@ export default function Target() {
 
   return (
     <View style={{ flex: 1, padding: 24 }}>
+      <StatusBar barStyle="dark-content" />
       <PageHeader
         title="Meta"
         subtitle="Economize para alcançar sua meta financeira."
