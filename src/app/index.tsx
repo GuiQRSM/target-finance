@@ -38,7 +38,23 @@ export default function Index() {
 
   async function fetchSummary(): Promise<HomeHeaderProps> {
     try {
-    } catch (error) {}
+      const response = await transactionsDatabase.summary();
+
+      return {
+        total: numberToCurrency(response.input + response.output),
+        input: {
+          label: 'Entradas',
+          value: numberToCurrency(response.input),
+        },
+        output: {
+          label: 'Saídas',
+          value: numberToCurrency(response.output),
+        },
+      };
+    } catch (error) {
+      Alert.alert('Erro', 'Não foi possível carregar o resumo.');
+      console.log(error);
+    }
   }
 
   async function fetchData() {
